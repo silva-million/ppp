@@ -1,0 +1,24 @@
+<h1>Edit Student</h1>
+
+<form action="/students/<%= student._id %>?_method=PUT" method="POST">
+  <div>
+    <label>Name</label><br/>
+    <input type="text" name="name" required minlength="6" value="<%= student.name || '' %>">
+    <% if (errors.name) { %><div><%= errors.name.message %></div><% } %>
+  </div>
+
+  <div>
+    <label>Age</label><br/>
+    <input type="number" name="age" required min="1" value="<%= student.age || '' %>">
+    <% if (errors.age) { %><div><%= errors.age.message %></div><% } %>
+  </div>
+
+  <div>
+    <label>Course</label><br/>
+    <input type="text" name="course" required value="<%= student.course || '' %>">
+    <% if (errors.course) { %><div><%= errors.course.message %></div><% } %>
+  </div>
+
+  <br/>
+  <button type="submit">Update</button>
+</form>

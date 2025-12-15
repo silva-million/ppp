@@ -1,0 +1,32 @@
+<h1>All Students</h1>
+
+<% if (!students.length) { %>
+  <p>No students yet.</p>
+<% } else { %>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Course</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% students.forEach(s => { %>
+        <tr>
+          <td><%= s.name %></td>
+          <td><%= s.age %></td>
+          <td><%= s.course %></td>
+          <td>
+            <a href="/students/<%= s._id %>">View</a> |
+            <a href="/students/<%= s._id %>/edit">Edit</a> |
+            <form action="/students/<%= s._id %>?_method=DELETE" method="POST" style="display:inline;">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } %>

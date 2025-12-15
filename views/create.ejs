@@ -1,0 +1,28 @@
+<h1>Add Student</h1>
+
+<% if (typeof errorMsg !== "undefined" && errorMsg) { %>
+  <p><strong><%= errorMsg %></strong></p>
+<% } %>
+
+<form action="/students" method="POST">
+  <div>
+    <label>Name</label><br/>
+    <input type="text" name="name" required minlength="6" value="<%= student.name || '' %>">
+    <% if (errors.name) { %><div><%= errors.name.message %></div><% } %>
+  </div>
+
+  <div>
+    <label>Age</label><br/>
+    <input type="number" name="age" required min="1" value="<%= student.age || '' %>">
+    <% if (errors.age) { %><div><%= errors.age.message %></div><% } %>
+  </div>
+
+  <div>
+    <label>Course</label><br/>
+    <input type="text" name="course" required value="<%= student.course || '' %>">
+    <% if (errors.course) { %><div><%= errors.course.message %></div><% } %>
+  </div>
+
+  <br/>
+  <button type="submit">Save</button>
+</form>
